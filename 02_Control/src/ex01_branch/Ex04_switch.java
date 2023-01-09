@@ -85,7 +85,7 @@ public class Ex04_switch {
 		
 		// 1분기, 2분기, 3분기, 4분기 (방식 3개)
 		
-		int month = 11;
+		int month = 1;
 		
 		// 방식1.
 		switch(month) {
@@ -122,9 +122,6 @@ public class Ex04_switch {
 		System.out.println((month -1) / 3 + 1 + "분기");
 		
 	}
-	
-	
-	
 	
 	public static void main(String[] args) {
 		
