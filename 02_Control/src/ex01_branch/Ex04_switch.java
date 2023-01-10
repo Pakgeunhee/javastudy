@@ -26,6 +26,7 @@ public class Ex04_switch {
 		int month = 1;
 		
 		switch(month) {
+		case 12 :
 		case 1 : 
 		case 2 : System.out.println("겨울"); break;
 		case 3 :
