@@ -18,26 +18,42 @@ public class User {
 	 	4. "메소드"는 public하게 처리한다. "필드"에 접근하기 위해서는 "메소드"를 통해서 접근해야 한다.
 	 */
 	
+	/*
+		Getter와 Setter
+		1. Getter 
+			1) 필드값을 외부로 반출하는 메소드
+			2) get + 필드 이름을 가지는데 이를 수정하면 안 된다.
+		2. Setter
+			1) 외부로부터 필드값을 받아오는 메소드
+			2) set + 필드 이름을 가지는데 이를 수정하면 안 된다.
+	 */
+	
 	
 	// 필드
 	private String id;
 	private String pw;
-		
+	private boolean isVip;
+	
 	// 메소드
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
-	
 	public String getId() {
 		return id;
 	}
-	
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getPw() {
 		return pw;
 	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	public boolean isVip() {
+		return isVip;
+	}
+	public void setVip(boolean isVip) {
+		this.isVip = isVip;
+	}
+	
+		
 
 }

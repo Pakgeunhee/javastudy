@@ -243,14 +243,16 @@ public class MainClass {
 		
 		
 		int max = scores[0];
+		int num = 0;
 		
 		for(int i = 1; i < scores.length; i++) {
 				if(max < scores[i]) {
 					max = scores[i];
+					num = i;
 					}
 		}
 		
-		System.out.println("가장 높은 점수를 받은 사람은 " + max + "입니다.");
+		System.out.println("가장 높은 점수를 받은 사람은 " + names[num] + "입니다.");
 				
 		 
 	}
