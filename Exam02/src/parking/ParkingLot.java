@@ -57,10 +57,38 @@ public class ParkingLot {
 	}	
 
 	public void deleteCar() {
+		// 차량이 없을 경우
+		if(idx == 0) {
+			System.out.println("차량이 없습니다.");
+			return;
+		}
 		
+		// 주차장에서 차량이 나갈 경우
+		System.out.println("현재 등록된 차량 : " + idx + "대");
+		System.out.println("차량번호 >>> ");
+		String carNo = sc.next();
+				
+		for(int i = 0; i < idx; i++) {
+			if(cars[i].getCarNo().equals(carNo)) {
+				cars[i] = cars[--idx];
+				System.out.println("차량번호 " + carNo + "의 정산이 완료되었습니다.");
+				break;
+			} else {
+				System.out.println("등록된 차량이 아닙니다.");
+				return;
+			}
+		}
 	}
 	
 	public void printAllCars() {
+		// 현재 있는 차량의 총 대수, 등록된 차량 정보
+		
+		System.out.println("등록된 차량은 총 " + idx + "대입니다.");
+		for(int i = 0; i < idx; i++) {
+			System.out.println("현재 등록된 차량 번호는 " + cars[i].getCarNo() + "이며, 차량 모델은 " + cars[i].getModel() + "입니다.");
+		}
+		System.out.println("대박주차장을 이용해주셔서 감사합니다.");
+		
 		
 	}
 	
