@@ -13,9 +13,7 @@ public class MainClass {
 		customer.buy(parisBaguette, 5000); // parisBaguette에서 5000원어치 빵 구입
 		
 		customer.info();
-		System.out.println("----------");
 		tourLesJours.info();
-		System.out.println("----------");
 		parisBaguette.info();
 
 	}

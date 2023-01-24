@@ -24,7 +24,7 @@ public class Bakery {
 		
 		BreadAndChange bnc = new BreadAndChange(sellBread, change);
 		breadCount -= sellBread;
-		bakeryMoney = money - change;
+		bakeryMoney += (money - change);
 		
 		return bnc;
 		
