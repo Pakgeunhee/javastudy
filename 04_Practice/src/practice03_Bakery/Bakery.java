@@ -1,4 +1,4 @@
-package practice03_Bakery;
+  package practice03_Bakery;
 
 // 한 가지 종류의 빵만 판매하는 빵집
 
