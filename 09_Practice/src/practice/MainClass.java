@@ -1,9 +1,16 @@
 package practice;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class MainClass {
 	
@@ -79,10 +86,22 @@ public class MainClass {
 		
 		File dir = new File("C:" + File.separator + "storage");
 		
+		/* 저장된 파일이 myfile.txt 뿐이라는 걸 알고 있을 경우,
 		File file = new File(dir, "myfile.txt");
 		
 		if(file.exists()) {
 			file.delete();
+		}
+		*/
+		
+		// 저장된 모든 파일을 지운다는 코드(디렉터리는 없다는 가정)
+		File[] files = dir.listFiles();
+		if(files != null) {
+			for(File file : files) {
+				if(file.isFile()) {
+					file.delete();
+				}
+			}
 		}
 	
 		if(dir.exists()) {
@@ -90,9 +109,103 @@ public class MainClass {
 		}
 	}
 	
+	// 문제4. 사용자로부터 입력 받은 문자열을 C:\storage\diary.txt 파일로 보내시오.
+	// 총 5개 문장을 입력 받아서 보내시오.
+	public static void ex04() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String[] sentences = new String[5];
+		System.out.println("5문장을 입력하세요.");
+		
+		for(int i = 0; i < sentences.length; i++) {			
+			sentences[i] = sc.nextLine();			
+		}
+		
+		File dir = new File("C:" + File.separator + "storage");
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		
+		File file = new File(dir, "diary.txt");
+		
+		try(PrintWriter out = new PrintWriter(file)){
+			
+			for(int i = 0; i < sentences.length; i++) {
+				out.println(sentences[i]);
+			}
+			System.out.println("diary.txt 파일이 생성되었다.");
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		sc.close();		
+	}
+	
+	// 문제5. 예외가 발생한 경우 예외 메시지와 예외 발생시간을 저장한 C:\storage\log.txt
+	public static void ex05() {
+		
+		try {
+			
+			Scanner sc = new Scanner(System.in);
+					
+			
+			System.out.print("첫 번째 정수를 입력하세요. >>> ");
+			int number1 = sc.nextInt();
+			
+			System.out.print("두 번째 정수를 입력하세요. >>> ");
+			int number2 = sc.nextInt();
+			
+			int add = number1 + number2;
+			int sub = number1 - number2;
+			int mul = number1 * number2;
+			int div = number1 / number2;
+			
+			System.out.println(number1 + "+" + number2 + "=" + add);
+			System.out.println(number1 + "-" + number2 + "=" + sub);
+			System.out.println(number1 + "*" + number2 + "=" + mul);
+			System.out.println(number1 + "/" + number2 + "=" + div);		
+			
+			sc.close();
+			
+		} catch(Exception e) {
+			
+			LocalDateTime now = LocalDateTime.now();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String dateTime = dtf.format(now);
+			
+			// 예외 클래스 이름
+			String className = e.getClass().getName();
+			
+			// 예외 메시지
+			String message = e.getMessage();
+			
+			// 로그 파일 만들기
+			File dir = new File("C:" + File.separator + "storage");
+			if(dir.exists() == false) {
+				dir.mkdirs();
+			}
+			
+			File file = new File(dir, "log.txt");
+			
+			
+			// 생성 모드(언제나 새로 만든다.)	new FileWriter(file)
+			// 추가 모드(기존 내용에 추가한다.) new FileWriter(file, true)
+			try(BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+				
+				bw.write(dateTime + " " + className + " " + message + "\n");
+				// bw.newLine();  \n을 대신할 수 있는 코드
+				
+				System.out.println("예외 메시지가 log.txt 파일에 기록되었습니다.");
+								
+			} catch(IOException e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		
-		ex03();
+		ex05();
 
 	}
 
