@@ -98,11 +98,4 @@ public class ParkingLot1 {
 			
 		}
 	}
-	
-	
-	
-	
-	
-	
-
 }
