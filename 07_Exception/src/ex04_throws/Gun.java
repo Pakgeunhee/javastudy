@@ -27,8 +27,6 @@ public class Gun {
 
 	public void setBullet(int bullet) {
 		this.bullet = bullet;
-	}
-	
-	
+	}	
 	
 }
