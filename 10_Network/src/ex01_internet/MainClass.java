@@ -107,7 +107,7 @@ public class MainClass {
 			System.out.println("apiURL 주소 오류");
 		} catch(IOException e) {
 			System.out.println("apiURL 접속 오류");
-		}
+		} 
 		
 	}
 	

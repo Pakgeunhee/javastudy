@@ -26,7 +26,7 @@ public class ServerMainClass {
 			// bind : ServerSocket에 InetSocketAddress 정보 전달 - local:9090이 서버 주소이다.
 			serverSocket.bind(address);
 			
-			// 무한루프로 sercerSocket 구성
+			// 무한루프로 serverSocket 구성
 			while(true) {
 				
 				System.out.println("[서버] 클라이언트 접속을 기다리고 있습니다.");

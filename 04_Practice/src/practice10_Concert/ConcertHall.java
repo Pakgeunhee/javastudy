@@ -44,7 +44,7 @@ public class ConcertHall {
 		System.out.print("취소할 좌석 타입 입력" + Arrays.toString(seatTypes) + " >>> ");
 		String seatType = sc.next();
 		for(int i = 0; i < seatTypes.length; i++) {
-			if(seatType.equals(seatTypes[i])) {
+			if(seatType.equalsIgnoreCase(seatTypes[i])) {
 				seatGroups[i].cancel();  // boolean 반환값은 사용하지 않았음
 				return;
 			}
@@ -53,10 +53,10 @@ public class ConcertHall {
 	}
 	
 	// 전체 예약 확인
-	public void hallInfo() {
+	public void info() {
 		System.out.println("[" + hallName + "]");
 		for(int i = 0; i < seatGroups.length; i++) {
-			seatGroups[i].reserveInfo();
+			//seatGroups[i].info();
 		}
 		System.out.println();
 	}
@@ -69,7 +69,7 @@ public class ConcertHall {
 			switch(choice) {
 			case "1": reserve(); break;
 			case "2": cancel(); break;
-			case "3": hallInfo(); break;
+			case "3": info(); break;
 			case "0": return;
 			default: System.out.println("Bad Request");
 			}

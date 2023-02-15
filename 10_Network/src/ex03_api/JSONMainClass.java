@@ -109,6 +109,7 @@ public class JSONMainClass {
 			reader.close();
 			con.disconnect();
 			
+			
 			JSONArray items = new JSONObject(sb.toString())
 								.getJSONObject("response")
 								.getJSONObject("body")
@@ -122,6 +123,7 @@ public class JSONMainClass {
 				System.out.println(item.get("frcstFourDt") + " : " + item.getString("frcstFourCn"));
 			}
 			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -130,7 +132,7 @@ public class JSONMainClass {
 	
 	public static void main(String[] args) {
 		
-		ex02();
+		ex01();
 
 	}
 
